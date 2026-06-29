@@ -10,13 +10,28 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Checkout repository
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Verify HTML files
+      # Verify project files
+      - name: Verify Project Files
         run: |
           echo "Checking project files..."
           ls -la
 
-      - name: Build Successful
-        run: echo "Portfolio build completed successfully!"
+      # Simulate Build
+      - name: Build Portfolio
+        run: |
+          echo "Building Portfolio..."
+          echo "Build Completed Successfully!"
+
+      # Deployment Success Notification
+      - name: Deployment Success
+        if: success()
+        run: echo "✅ Deployment Successful"
+
+      # Deployment Failure Notification
+      - name: Deployment Failed
+        if: failure()
+        run: echo "❌ Deployment Failed"
